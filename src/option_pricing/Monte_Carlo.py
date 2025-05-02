@@ -1,5 +1,5 @@
 import numpy as np
-from numpy import float64, log, exp, sqrt
+from numpy import log, exp, sqrt
 from typing import Union
 
 
@@ -21,7 +21,7 @@ class BS_Call_MC:
         I (int) : Number of simulations for Monte Carlo method
     """
 
-    def __init__(self, S: Union[int, float], X: float, r: float, sigma: float, T: int, t: float, I: int):
+    def __init__(self, S: Union[int, float, np.floating], X: float, r: float, sigma: float, T: float, t: float, I: int):
         """
         Initialize the parameters for the Black-Scholes Monte Carlo simulation.
 

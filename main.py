@@ -61,7 +61,7 @@ def compare_option_prices() -> None:
     )
 
 
-def plot_monte_carlo_vs_exact(curr_time: float64) -> None:
+def plot_monte_carlo_vs_exact(curr_time: float) -> None:
     """
     This function compares the option price calculated by Monte Carlo simulations
     for varying number of iterations against the exact Black-Scholes price at a given time to maturity (curr_time).

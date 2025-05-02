@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from numpy import float64, ndarray, log, exp, sqrt
+from numpy import ndarray, log, exp, sqrt
 from scipy import stats
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -45,7 +45,7 @@ class BlackScholes:
         self.sigma = sigma  # Volatility
         self.T = T  # Time to maturity
 
-    def call_price(self, t: float) -> float:
+    def call_price(self, t: float | ndarray) -> float:
         """
         Calculate the Black-Scholes call option price at time t.
 
