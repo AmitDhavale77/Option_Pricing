@@ -1,14 +1,13 @@
 import pandas as pd
 import numpy as np
+from numpy import float64
 import matplotlib.pyplot as plt
 from src.option_pricing.Black_Scholes import BlackScholes
 from src.option_pricing.Monte_Carlo import BS_Call_MC
 import warnings
+from typing import List
 
-warnings.filterwarnings("ignore", category=FutureWarning)
-
-
-def plot_black_scholes_prices():
+def plot_black_scholes_prices() -> None:
     """
     This function generates plots for the Black-Scholes option pricing model.
     It generates two plots:
@@ -36,7 +35,7 @@ def plot_black_scholes_prices():
     bs_model.plot_call_price_vs_stock(s_values, t=0.99999)
 
 
-def compare_option_prices():
+def compare_option_prices() -> None:
     """
     This function compares option prices from the Monte Carlo simulation and the Black-Scholes formula
     for two scenarios: Strike 95 and Time-to-Maturity (T-t = 0.25 and T-t = 0.75).
@@ -62,7 +61,7 @@ def compare_option_prices():
     )
 
 
-def plot_monte_carlo_vs_exact(curr_time):
+def plot_monte_carlo_vs_exact(curr_time: float64) -> None:
     """
     This function compares the option price calculated by Monte Carlo simulations
     for varying number of iterations against the exact Black-Scholes price at a given time to maturity (curr_time).
@@ -119,7 +118,7 @@ def plot_monte_carlo_vs_exact(curr_time):
     plt.show()
 
 
-def plot_monte_carlo_vs_exact_for_strikes():
+def plot_monte_carlo_vs_exact_for_strikes() -> None:
     """
     This function compares the option prices calculated using Monte Carlo simulations
     and the Black-Scholes model for different strike prices (95, 98, 100, 105) over time to maturity.
@@ -201,7 +200,7 @@ def plot_monte_carlo_vs_exact_for_strikes():
     plt.show()
 
 
-def main():
+def main() -> None:
     """
     Main function that calls all other functions to generate plots and compare results.
     """

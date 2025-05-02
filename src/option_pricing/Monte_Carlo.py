@@ -1,5 +1,6 @@
 import numpy as np
-from numpy import log, exp, sqrt
+from numpy import float64, log, exp, sqrt
+from typing import Union
 
 
 class BS_Call_MC:
@@ -20,7 +21,7 @@ class BS_Call_MC:
         I (int) : Number of simulations for Monte Carlo method
     """
 
-    def __init__(self, S, X, r, sigma, T, t, I):
+    def __init__(self, S: Union[int, float64], X: float64, r: float, sigma: float, T: int, t: float64, I: int):
         """
         Initialize the parameters for the Black-Scholes Monte Carlo simulation.
 
@@ -41,7 +42,7 @@ class BS_Call_MC:
         self.t = t  # Current time
         self.I = I  # Number of simulations
 
-    def calculate_option_price(self):
+    def calculate_option_price(self) -> float64:
         """
         Calculate the price of the European call option using Monte Carlo simulation.
 

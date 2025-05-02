@@ -1,9 +1,11 @@
 import numpy as np
 import pandas as pd
-from numpy import log, exp, sqrt
+from numpy import float64, ndarray, log, exp, sqrt
 from scipy import stats
 import matplotlib.pyplot as plt
 import seaborn as sns
+from pandas.core.frame import DataFrame
+from typing import List, Union
 
 sns.set()
 plt.style.use("fivethirtyeight")
@@ -25,7 +27,7 @@ class BlackScholes:
         T (float) : Time to maturity
     """
 
-    def __init__(self, S, X, r, sigma, T):
+    def __init__(self, S: Union[int, float64], X: float64, r: float, sigma: float, T: int):
         """
         Initialize the Black-Scholes model with the given parameters.
 
@@ -42,7 +44,7 @@ class BlackScholes:
         self.sigma = sigma  # Volatility
         self.T = T  # Time to maturity
 
-    def call_price(self, t):
+    def call_price(self, t: float64) -> float64:
         """
         Calculate the Black-Scholes call option price at time t.
 
@@ -66,7 +68,7 @@ class BlackScholes:
             -self.r * (self.T - t)
         ) * stats.norm.cdf(d2)
 
-    def get_call_prices_for_times(self, t_range):
+    def get_call_prices_for_times(self, t_range: ndarray) -> List[float64]:
         """
         Get the call option prices for a given time range.
 
@@ -78,7 +80,7 @@ class BlackScholes:
         """
         return [self.call_price(t) for t in t_range]
 
-    def get_call_prices_for_strikes(self, t_range, strikes):
+    def get_call_prices_for_strikes(self, t_range: ndarray, strikes: List[float64]) -> DataFrame:
         """
         Get a DataFrame of call option prices for a range of strikes and times to maturity.
 
@@ -95,7 +97,7 @@ class BlackScholes:
             data[strike] = bs.get_call_prices_for_times(t_range)
         return pd.DataFrame(data, index=t_range)
 
-    def plot_call_price_vs_time(self, df):
+    def plot_call_price_vs_time(self, df: DataFrame):
         """
         Plot the call option price as a function of time to maturity for different strike prices.
 
@@ -119,7 +121,7 @@ class BlackScholes:
         )  # Show legend for different strikes
         plt.show()  # Display the plot
 
-    def plot_call_price_vs_stock(self, s_range, t):
+    def plot_call_price_vs_stock(self, s_range: ndarray, t: float):
         """
         Plot the call option price as a function of stock price at a fixed time.
 
