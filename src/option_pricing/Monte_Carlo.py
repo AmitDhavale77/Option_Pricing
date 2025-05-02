@@ -21,7 +21,7 @@ class BS_Call_MC:
         I (int) : Number of simulations for Monte Carlo method
     """
 
-    def __init__(self, S: Union[int, float64], X: float64, r: float, sigma: float, T: int, t: float64, I: int):
+    def __init__(self, S: Union[int, float], X: float, r: float, sigma: float, T: int, t: float, I: int):
         """
         Initialize the parameters for the Black-Scholes Monte Carlo simulation.
 
@@ -42,7 +42,7 @@ class BS_Call_MC:
         self.t = t  # Current time
         self.I = I  # Number of simulations
 
-    def calculate_option_price(self) -> float64:
+    def calculate_option_price(self) -> float:
         """
         Calculate the price of the European call option using Monte Carlo simulation.
 

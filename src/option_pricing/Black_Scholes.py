@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pandas.core.frame import DataFrame
 from typing import List, Union
+from typing import Sequence
 
 sns.set()
 plt.style.use("fivethirtyeight")
@@ -27,7 +28,7 @@ class BlackScholes:
         T (float) : Time to maturity
     """
 
-    def __init__(self, S: Union[int, float64], X: float64, r: float, sigma: float, T: int):
+    def __init__(self, S: Union[int, float], X: float, r: float, sigma: float, T: int):
         """
         Initialize the Black-Scholes model with the given parameters.
 
@@ -44,7 +45,7 @@ class BlackScholes:
         self.sigma = sigma  # Volatility
         self.T = T  # Time to maturity
 
-    def call_price(self, t: float64) -> float64:
+    def call_price(self, t: float) -> float:
         """
         Calculate the Black-Scholes call option price at time t.
 
@@ -68,7 +69,7 @@ class BlackScholes:
             -self.r * (self.T - t)
         ) * stats.norm.cdf(d2)
 
-    def get_call_prices_for_times(self, t_range: ndarray) -> List[float64]:
+    def get_call_prices_for_times(self, t_range: ndarray) -> List[float]:
         """
         Get the call option prices for a given time range.
 
@@ -80,7 +81,7 @@ class BlackScholes:
         """
         return [self.call_price(t) for t in t_range]
 
-    def get_call_prices_for_strikes(self, t_range: ndarray, strikes: List[float64]) -> DataFrame:
+    def get_call_prices_for_strikes(self, t_range: ndarray, strikes: Sequence[Union[int, float]]) -> DataFrame:
         """
         Get a DataFrame of call option prices for a range of strikes and times to maturity.
 
